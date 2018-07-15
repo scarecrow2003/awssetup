@@ -4,8 +4,9 @@ IAM
 2. Create one user attached to the above group
 
 VPC
-1. Create security group with inbound ports 80, 22(60914), 25(465), 11211, 443, 587
-2. Create Elastic IPs
+1. Change to Singapore
+2. Create security group with inbound ports 80, 22(60914), 25(465), 11211, 443, 587
+3. Create Elastic IPs
 
 EC2
 1. Create key pair and download
