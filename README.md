@@ -11,6 +11,7 @@ VPC
 EC2
 1. Create key pair and download
 2. Create instance
+
   wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
   sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
   sudo yum install -y mysql-server
@@ -24,7 +25,7 @@ EC2
 
 Server setup
 1. Install httpd, nginx, wget, unzip, mysql, php, php-mysql, php-gd, php-pear
-2. Enable auto start for httpd, nginx, mysql
+2. Enable auto start for httpd, nginx, mysql. Secure mysql
 3. Install vim
 4. Config nginx, httpd
 5. Copy uploads fold (S3)
