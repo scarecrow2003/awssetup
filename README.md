@@ -11,6 +11,15 @@ VPC
 EC2
 1. Create key pair and download
 2. Create instance
+  wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+  sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+  sudo yum install -y mysql-server
+  sudo rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+  sudo yum install -y vim httpd nginx wget unzip php php-mysql php-gd php-pear
+  sudo chkconfig httpd on
+  sudo chkconfig nginx on
+  sudo chkconfig mysqld on
+  
 3. Assign the Elastic IP to the above instance
 
 Server setup
