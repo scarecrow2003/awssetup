@@ -24,10 +24,9 @@ EC2
 3. Assign the Elastic IP to the above instance
 
 Server setup
-1. Install httpd, nginx, wget, unzip, mysql, php, php-mysql, php-gd, php-pear
-2. Enable auto start for httpd, nginx, mysql. Secure mysql
-3. Install vim
-4. Config nginx, httpd
+1. Secure mysql
+  sudo grep 'temporary password' /var/log/mysqld.log
+  sudo mysql_secure_installation
 5. Copy uploads fold (S3)
 6. Copy html folder and mysqldump
 7. Import mysqldump
