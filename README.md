@@ -32,5 +32,7 @@ Server setup
 7. Import mysqldump
 8. Install gcc, ImageMagick
 9. Change ssh port
-10. Install Postfix https://seasonofcode.com/posts/custom-domain-e-mails-with-postfix-and-gmail-the-missing-tutorial.html
-11. Install Denyhosts
+10. Install Denyhosts
+
+
+Install Postfix https://seasonofcode.com/posts/custom-domain-e-mails-with-postfix-and-gmail-the-missing-tutorial.html
