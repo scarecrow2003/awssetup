@@ -27,7 +27,7 @@ Server setup
 1. Secure mysql
   sudo grep 'temporary password' /var/log/mysqld.log
   sudo mysql_secure_installation
-2. Config httpd, nginx, mysql
+2. Config httpd, nginx, mysql, .htaccess
 5. Copy uploads fold (S3)
 6. Copy html folder and mysqldump
 7. Import mysqldump
