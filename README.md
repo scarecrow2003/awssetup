@@ -31,7 +31,7 @@ Server setup
   `httpd.conf`:
   ```Listen 8008```
   `vhost.conf`:
-  ```NameVirtualHost 127.0.0.1:8008
+  NameVirtualHost 127.0.0.1:8008
   <VirtualHost 127.0.0.1:8008>
     ServerAdmin contactus@appletreesg.com
     DocumentRoot /var/www/html
@@ -46,9 +46,9 @@ Server setup
     </Directory>
     ErrorLog /var/log/httpd/error_log
     CustomLog /var/log/httpd/access_log common
-</VirtualHost>```
+</VirtualHost>
 `default.conf`:
-```server {
+server {
     listen       80;
     server_name  appletreesg.com ;
     return       301 http://www.appletreesg.com$request_uri;
@@ -79,15 +79,25 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_pass http://127.0.0.1:8008;
     }
-}```
+}
 `proxy_params`:
-```proxy_set_header Host $http_host;
+proxy_set_header Host $http_host;
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 proxy_set_header X-Forwarded-Host $host;
-proxy_set_header X-Forwarded-Proto $scheme;```
+proxy_set_header X-Forwarded-Proto $scheme;
 `appletreesg-cloudflare.key` `appletreesg-cloudflare.pem`
 5. Copy uploads fold (S3)
+  On local machine, install aws cli:
+  `````
+  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+  unzip awscli-bundle.zip
+  sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  aws configure
+  `````
+  Singapore region name: ap-southeast-1
+  
+  
 6. Copy html folder and mysqldump
 7. Import mysqldump
 8. Install gcc, ImageMagick
