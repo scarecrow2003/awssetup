@@ -92,6 +92,7 @@ Server setup
   proxy_set_header X-Forwarded-Proto $scheme;
   ```
 `appletreesg-cloudflare.key` `appletreesg-cloudflare.pem`
+
 5. Copy uploads fold (S3)
   On local machine, install aws cli:
   ```curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -100,7 +101,62 @@ Server setup
   aws configure
   ```
   Singapore region name: ap-southeast-1
-  
+  Get account number from new aws account: support -> support center
+  Go to old account to create the policy:
+  ```{
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Sid": "DelegateS3Access",
+              "Effect": "Allow",
+              "Principal": {
+                  "AWS": "arn:aws:iam::DESTINATION_BUCKET_ACCOUNT_NUMBER:root"
+              },
+              "Action": [
+                  "s3:ListBucket",
+                  "s3:GetObject"
+              ],
+              "Resource": [
+                  "arn:aws:s3:::SOURCE_BUCKET_NAME/*",
+                  "arn:aws:s3:::SOURCE_BUCKET_NAME"
+              ]
+          }
+      ]
+  }
+  ```
+  Add following policy to the user in the new account:
+  ```{
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "s3:ListBucket",
+                  "s3:GetObject"
+              ],
+              "Resource": [
+                  "arn:aws:s3:::image.appletreesg.com",
+                  "arn:aws:s3:::image.appletreesg.com/*"
+              ]
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "s3:ListBucket",
+                  "s3:PutObject",
+                  "s3:PutObjectAcl"
+              ],
+              "Resource": [
+                  "arn:aws:s3:::image.appletreesg.com",
+                  "arn:aws:s3:::image.appletreesg.com/*"
+              ]
+          }
+      ]
+  }
+  ```
+  Copy files:
+  ```aws s3 sync s3://SOURCE-BUCKET-NAME s3://DESTINATION-BUCKET-NAME --source-region SOURCE-REGION-NAME --region DESTINATION-REGION-NAME
+  ```
   
 6. Copy html folder and mysqldump
 7. Import mysqldump
